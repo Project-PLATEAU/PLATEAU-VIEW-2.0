@@ -1,0 +1,108 @@
+type Request implements Node {
+  id: ID!
+  items: [RequestItem!]!
+  title: String!
+  description: String
+  createdById: ID!
+  workspaceId: ID!
+  projectId: ID!
+  threadId: ID!
+  reviewersId: [ID!]!
+  state: RequestState!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  approvedAt: DateTime
+  closedAt: DateTime
+  thread: Thread
+  createdBy: User
+  workspace: Workspace
+  project: Project
+  reviewers: [User!]!
+}
+
+type RequestItem {
+  itemId: ID!
+  version: String
+  ref: String
+  item: VersionedItem
+}
+
+enum RequestState {
+  DRAFT
+  WAITING
+  CLOSED
+  APPROVED
+}
+
+# input
+input CreateRequestInput {
+  projectId: ID!
+  title: String!
+  description: String
+  state: RequestState
+  reviewersId: [ID!]
+  items: [RequestItemInput!]!
+}
+
+
+input UpdateRequestInput {
+  requestId: ID!
+  title: String
+  description: String
+  state: RequestState
+  reviewersId: [ID!]
+  items: [RequestItemInput!]
+}
+
+input RequestItemInput {
+  itemId: ID!
+}
+
+input DeleteRequestInput {
+  projectId: ID!
+  requestsId: [ID!]!
+}
+
+input ApproveRequestInput {
+  requestId: ID!
+}
+
+# Payload
+type RequestPayload {
+  request: Request!
+}
+
+type DeleteRequestPayload {
+  requests: [ID!]!
+}
+
+type RequestEdge {
+  cursor: Cursor!
+  node: Request
+}
+
+type RequestConnection {
+  edges: [RequestEdge!]!
+  nodes: [Request]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+extend type Query {
+  requests(
+    projectId: ID!
+    key: String
+    state: [RequestState!]
+    createdBy: ID
+    reviewer: ID
+    pagination: Pagination
+    sort: Sort
+  ): RequestConnection!
+}
+
+extend type Mutation {
+  createRequest(input: CreateRequestInput!): RequestPayload
+  updateRequest(input: UpdateRequestInput!): RequestPayload
+  approveRequest(input: ApproveRequestInput!): RequestPayload
+  deleteRequest(input: DeleteRequestInput!): DeleteRequestPayload
+}

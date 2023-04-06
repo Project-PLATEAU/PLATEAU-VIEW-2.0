@@ -1,0 +1,20 @@
+extends:
+  - reearth
+root: true
+rules:
+  import/order:
+    - warn
+    - pathGroups:
+        - pattern: "@reearth-cms/**"
+          group: external
+          position: after
+      pathGroupsExcludedImportTypes: ["builtin"]
+      newlines-between: always
+      alphabetize:
+        order: asc
+        caseInsensitive: true
+overrides:
+  - files:
+      - i18next-parser.config.js
+    extends:
+      - reearth/commonjs

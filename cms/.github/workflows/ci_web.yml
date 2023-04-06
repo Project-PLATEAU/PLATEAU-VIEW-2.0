@@ -1,0 +1,64 @@
+name: ci-web
+on:
+  push:
+    branches: [main, release]
+    paths:
+      - web/**
+      - .github/workflows/ci_web.yml
+      - .github/workflows/deploy_test.yml
+      - .github/workflows/pr_title.yml
+      - .github/workflows/stage.yml
+      - .github/workflows/release.yml
+  pull_request:
+    paths:
+      - web/**
+      - .github/workflows/ci_web.yml
+      - .github/workflows/deploy_test.yml
+      - .github/workflows/pr_title.yml
+      - .github/workflows/stage.yml
+      - .github/workflows/release.yml
+jobs:
+  ci:
+    name: ci
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+      - uses: actions/checkout@v3
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v3
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install
+        run: yarn install
+      - name: Lint
+        run: yarn run lint
+      - name: Test
+        run: yarn run coverage
+      - name: Send coverage report
+        uses: codecov/codecov-action@v1
+        with:
+          flags: web
+      - name: Check translations
+        run: yarn i18n --fail-on-update
+      - name: Build
+        run: yarn build
+      - name: Pack
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/release'
+        run: mv dist reearth-cms-web && tar -zcvf reearth-cms-web.tar.gz reearth-cms-web
+      - uses: actions/upload-artifact@v3
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/release'
+        with:
+          name: reearth-cms-web
+          path: web/reearth-cms-web.tar.gz
+          if-no-files-found: error

@@ -1,0 +1,84 @@
+type ProjectAliasAvailability {
+  alias: String!
+  available: Boolean!
+}
+
+enum ProjectPublicationScope {
+  PUBLIC
+  LIMITED
+  PRIVATE
+}
+
+type ProjectPublication {
+  scope: ProjectPublicationScope!
+  assetPublic: Boolean!
+}
+
+type Project implements Node {
+  id: ID!
+  name: String!
+  description: String!
+  alias: String!
+  workspaceId: ID!
+  workspace: Workspace
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  publication: ProjectPublication
+}
+
+# Inputs
+input CreateProjectInput {
+  workspaceId: ID!
+  name: String
+  description: String
+  alias: String
+}
+
+input UpdateProjectPublicationInput {
+  scope: ProjectPublicationScope
+  assetPublic: Boolean
+}
+
+input UpdateProjectInput {
+  projectId: ID!
+  name: String
+  description: String
+  alias: String
+  publication: UpdateProjectPublicationInput
+}
+
+input DeleteProjectInput {
+  projectId: ID!
+}
+
+# Payload
+type ProjectPayload {
+  project: Project!
+}
+
+type DeleteProjectPayload {
+  projectId: ID!
+}
+
+type ProjectConnection {
+  edges: [ProjectEdge!]!
+  nodes: [Project]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type ProjectEdge {
+  cursor: Cursor!
+  node: Project
+}
+
+extend type Query {
+  projects(workspaceId: ID!, pagination: Pagination): ProjectConnection!
+  checkProjectAlias(alias: String!): ProjectAliasAvailability!
+}
+
+extend type Mutation {
+  createProject(input: CreateProjectInput!): ProjectPayload
+  updateProject(input: UpdateProjectInput!): ProjectPayload
+  deleteProject(input: DeleteProjectInput!): DeleteProjectPayload
+}

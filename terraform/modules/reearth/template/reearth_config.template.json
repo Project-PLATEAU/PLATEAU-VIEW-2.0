@@ -1,0 +1,9 @@
+{
+  "api": "${api}",
+  "plugins": "${plugins}",
+  "published": "${published}",
+  "auth0ClientId": "${auth0ClientId}",
+  "auth0Domain": "${auth0Domain}",
+  "auth0Audience": "${auth0Audience}",
+  "cesiumIonAccessToken": "${cesiumIonAccessToken}"
+}

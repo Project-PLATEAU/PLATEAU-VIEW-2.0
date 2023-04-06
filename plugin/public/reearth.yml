@@ -1,0 +1,78 @@
+name: PLATEAU Plugin
+version: 1.0.0
+id: plateau-plugin
+extensions:
+  - id: sidebar
+    name: Sidebar
+    type: widget
+    singleOnly: true
+    schema:
+      groups:
+        - id: default
+          fields:
+            - id: plateauURL
+              type: string
+              title: バックエンドURL
+            - id: projectName
+              type: string
+              title: プロジェクト名
+            - id: plateauAccessToken
+              type: string
+              title: バックエンドアクセストークン
+              private: true
+            - id: catalogURL
+              type: string
+              title: データカタログURL
+            - id: catalogProjectName
+              type: string
+              title: データカタログのプロジェクト名
+            - id: reearthURL
+              type: string
+              title: Re:Earthプロジェクトの公開URL
+            - id: enableGeoPub
+              type: bool
+              title: G空間情報センターに公開
+    widgetLayout:
+      defaultLocation:
+        zone: outer
+        section: left
+        area: middle
+  - id: storytelling
+    name: Storytelling(PLATEAU)
+    type: widget
+    singleOnly: true
+    widgetLayout:
+      defaultLocation:
+        zone: inner
+        section: center
+        area: bottom
+  - id: location
+    name: Location Footer
+    type: widget
+    singleOnly: true
+    widgetLayout:
+      defaultLocation:
+        zone: outer
+        section: left
+        area: bottom
+  - id: geolocation
+    name: My Location
+    type: widget
+    singleOnly: true
+    widgetLayout:
+      defaultLocation:
+        zone: inner
+        section: right
+        area: middle
+  - id: infobox
+    name: Infobox(PLATEAU)
+    type: block
+  - id: pedestrian
+    name: Pedestrian
+    type: widget
+    singleOnly: true
+    widgetLayout:
+      defaultLocation:
+        zone: inner
+        section: right
+        area: middle

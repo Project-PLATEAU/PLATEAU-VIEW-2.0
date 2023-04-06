@@ -1,0 +1,11 @@
+package: integration
+generate:
+  echo-server: true
+  strict-server: true
+  embedded-spec: true
+output:
+  server.gen.go
+additional-imports:
+    - package: github.com/reearth/reearth-cms/server/pkg/integrationapi
+      alias: .
+    - package: github.com/reearth/reearth-cms/server/pkg/id

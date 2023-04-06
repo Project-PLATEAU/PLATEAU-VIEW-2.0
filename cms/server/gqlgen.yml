@@ -1,0 +1,131 @@
+# Refer to https://gqlgen.com/config/
+# for detailed .gqlgen.yml documentation.
+
+schema:
+  - ./schemas/_shared.graphql
+  - ./schemas/asset.graphql
+  - ./schemas/user.graphql
+  - ./schemas/workspace.graphql
+  - ./schemas/project.graphql
+  - ./schemas/model.graphql
+  - ./schemas/request.graphql
+  - ./schemas/schema.graphql
+  - ./schemas/field.graphql
+  - ./schemas/item.graphql
+  - ./schemas/integration.graphql
+  - ./schemas/integration_webhook.graphql
+  - ./schemas/thread.graphql
+exec:
+  filename: internal/adapter/gql/generated.go
+model:
+  filename: internal/adapter/gql/gqlmodel/models_gen.go
+resolver:
+  filename: internal/adapter/gql/resolver.go
+  type: Resolver
+models:
+  Me:
+    fields:
+      workspaces:
+        resolver: true
+      myWorkspace:
+        resolver: true
+      integrations:
+        resolver: true
+  WorkspaceUserMember:
+    fields:
+      user:
+        resolver: true
+  WorkspaceIntegrationMember:
+    fields:
+      invitedBy:
+        resolver: true
+      integration:
+        resolver: true
+  Project:
+    fields:
+      workspace:
+        resolver: true
+  Item:
+    fields:
+      schema:
+        resolver: true
+      project:
+        resolver: true
+      thread:
+        resolver: true
+      model:
+        resolver: true
+      user:
+        resolver: true
+      integration:
+        resolver: true
+      status:
+        resolver: true
+      assets:
+        resolver: true
+  Model:
+    fields:
+      project:
+        resolver: true
+      schema:
+        resolver: true
+  Schema:
+    fields:
+      project:
+        resolver: true
+  Request:
+    fields:
+      project:
+        resolver: true
+      createdBy:
+        resolver: true
+      workspace:
+        resolver: true
+      thread:
+        resolver: true
+      reviewers:
+        resolver: true
+  RequestItem:
+    fields:
+      item:
+        resolver: true
+  SchemaField:
+    fields:
+      model:
+        resolver: true
+  Asset:
+    fields:
+      createdBy:
+        resolver: true
+      project:
+        resolver: true
+      thread:
+        resolver: true
+      items:
+        resolver: true
+  Integration:
+    fields:
+      developer:
+        resolver: true
+      webhook:
+        resolver: true
+  Thread:
+    fields:
+      workspace:
+        resolver: true
+  Comment:
+    fields:
+      author:
+        resolver: true
+  DateTime:
+    model: github.com/99designs/gqlgen/graphql.Time
+  FileSize:
+    model: github.com/99designs/gqlgen/graphql.Int64
+  Cursor:
+    model: github.com/reearth/reearthx/usecasex.Cursor
+  URL:
+    model: github.com/reearth/reearth-cms/server/internal/adapter/gql/gqlmodel.URL
+  Lang:
+    model: github.com/reearth/reearth-cms/server/internal/adapter/gql/gqlmodel.Lang
+  ID:
+    model: github.com/reearth/reearth-cms/server/internal/adapter/gql/gqlmodel.ID

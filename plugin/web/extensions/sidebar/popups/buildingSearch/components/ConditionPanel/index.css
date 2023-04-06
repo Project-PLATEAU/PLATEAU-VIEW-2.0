@@ -1,0 +1,9 @@
+/* global override for antd styles */
+.ant-select-dropdown .ant-select-item-option-selected:not(.ant-select-item-option-disabled){
+  background-color: #e7f9f9;
+  font-weight: normal;
+}
+
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled) .ant-select-item-option-state {
+  color: var(--theme-color);
+}

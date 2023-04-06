@@ -1,0 +1,37 @@
+{
+  "possibleTypes": {
+    "Node": [
+      "Asset",
+      "Integration",
+      "Item",
+      "Model",
+      "Project",
+      "Request",
+      "Schema",
+      "User",
+      "Workspace"
+    ],
+    "Operator": [
+      "Integration",
+      "User"
+    ],
+    "SchemaFieldTypeProperty": [
+      "SchemaFieldAsset",
+      "SchemaFieldBool",
+      "SchemaFieldDate",
+      "SchemaFieldInteger",
+      "SchemaFieldMarkdown",
+      "SchemaFieldReference",
+      "SchemaFieldRichText",
+      "SchemaFieldSelect",
+      "SchemaFieldTag",
+      "SchemaFieldText",
+      "SchemaFieldTextArea",
+      "SchemaFieldURL"
+    ],
+    "WorkspaceMember": [
+      "WorkspaceIntegrationMember",
+      "WorkspaceUserMember"
+    ]
+  }
+}

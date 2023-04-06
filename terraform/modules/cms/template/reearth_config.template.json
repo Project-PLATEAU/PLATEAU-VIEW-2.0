@@ -1,0 +1,8 @@
+{
+  "api": "${api}",
+  "auth0ClientId": "${auth0ClientId}",
+  "auth0Domain": "${auth0Domain}",
+  "auth0Audience": "${auth0Audience}",
+  "logoUrl": "${logoUrl}",
+  "coverImageUrl": "${coverImageUrl}"
+}

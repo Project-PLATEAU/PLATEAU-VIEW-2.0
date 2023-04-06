@@ -1,0 +1,59 @@
+name: ci-worker
+on:
+  push:
+    branches: [main, release]
+    paths:
+      - worker/**
+      - .github/workflows/ci_worker.yml
+      - .github/workflows/deploy_test.yml
+      - .github/workflows/pr_title.yml
+      - .github/workflows/stage.yml
+      - .github/workflows/release.yml
+  pull_request:
+    paths:
+      - worker/**
+      - .github/workflows/ci_worker.yml
+      - .github/workflows/deploy_test.yml
+      - .github/workflows/pr_title.yml
+      - .github/workflows/stage.yml
+      - .github/workflows/release.yml
+jobs:
+  ci:
+    name: ci
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: worker
+    services:
+      mongo:
+        image: mongo:5-focal
+        ports:
+          - 27017:27017
+    steps:
+      - uses: actions/setup-go@v3
+        with:
+          go-version: 1.19
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: cache
+        uses: actions/cache@v2
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v3
+        with:
+          version: v1.49
+          working-directory: server
+          args: --config=../.golangci.yml
+      - name: test
+        run: go test ./... -v -race -coverprofile=coverage.txt -covermode=atomic
+        env:
+          REEARTH_CMS_WORKER_DB: mongodb://localhost
+      - name: codecov
+        uses: codecov/codecov-action@v2
+        with:
+          flags: worker
+          file: coverage.txt

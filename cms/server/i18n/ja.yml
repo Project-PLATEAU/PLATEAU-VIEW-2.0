@@ -1,0 +1,106 @@
+Comment already exist in this thread: コメントはすでにこのスレッドに存在します。
+Comment does not exist in this thread: コメントはこのスレッドに存在しません。
+already locked: 既にロック済みです。
+already published: 既に公開済みです。
+archived: アーカイブ済み
+auth0 is not set up: Auth0が設定されていません。
+"auth0: domain is not set": Auth0のドメインが設定されていません。
+bucket name is empty: ストレージバケット名が空白です。
+can't update by approve: このメソッドでApproveすることはできません
+cannot change the role of the workspace owner: ワークスペースのオーナーのロールを変更することはできません。
+cannot delete workspace because at least one project is left: プロジェクトが存在するためワークスペースを削除することはできません。
+comment already exist in this thread: コメントは既にこのスレッドに存在します。
+comment does not exist in this thread: コメントはこのスレッドに存在しません。
+comment not found: コメントが見つかりませんでした。
+could not get user info: ユーザー情報が取得できませんでした。
+createdBy is required: createdByは必須です。
+duplicated item: 重複したアイテム
+duplicated key: キーが重複しています。
+duplicated user: ユーザーが重複しています。
+duplicated value: 値が重複すています。
+encoding password: パスワードのエンコーディング
+failed to auth: 認証に失敗しました。
+failed to create asset: アセットの作成に失敗しました。
+failed to delete file: ファイルの削除に失敗しました。
+failed to lock: ロックに失敗しました。
+failed to update user: ユーザー情報の更新に失敗しました。
+failed to upload file: ファイルのアップロードに失敗しました。
+field not found: ファイルが見つかりませんでした。
+field value exist: フィールドの値はすでに存在します。
+file not found: ファイルが見つかりませんでした。
+file not included: ファイルが含まれていません。
+file size cannot be zero: ファイルサイズは0以下にできません。
+file too large: ファイルサイズが大きすぎます。
+internal: 内部
+invalid URL: 無効なURLです。
+invalid access token: 向こうなアクセストークンです。
+invalid alias: 無効なエイリアスです。
+invalid base URL: 無効なベースURLです。
+invalid cursor: 無効なカーソルです。
+invalid default values: 無効なデフォルト値です。
+invalid document: 無効なドキュメントです。
+invalid email: 無効なEmailです。
+invalid email address: 無効なEmailアドレスです。
+invalid email or password: 無効なEmailもしくはパスワードです。
+invalid field: 無効なフィールドです。
+invalid file: 無効なファイルです。
+invalid iss: 無効なissです。
+invalid issuer: 無効なissuerです。
+invalid key: 無効なキーです。
+invalid lang: 無効な言語です。
+invalid object: 無効なオブジェクトです。
+invalid operator: 無効なオペレーターです。
+invalid parameters: 無効なパラメータです。
+invalid params: 無効なパラメーターです。
+invalid password: 無効なパスワードです。
+invalid password confirmation: パスワードが一致しません。
+invalid password reset request: 無効なリセットリクエストです。
+invalid project: 無効なプロジェクトです。
+invalid role: 無効なロールです。
+invalid secret: 無効なシークレットです。
+invalid smtp url: 無効なSMTP URLです。
+invalid type: 無効な型です。
+invalid type property: 無効な型プロパティです。
+invalid user id: 無効なユーザーIDです。
+invalid user name: 無効なユーザー名です。
+invalid value: 無効な値です。
+invalid values: 無効な値です。
+invalid workspace name: 無効なワークスペース名です。
+item field required: このフィールドは必須項目です。
+items cannot be empty: アイテムは空にできません。
+items should be on the same model: アイテムは全て同じモデルに対応する必要があります。
+max must be larger then min: 最大値は最小値より大きい必要があります。
+missing fields: フィールドが不足しています。
+missing required config: 必須項目が設定されていません。
+model key is already used by another model: このキーはすでに別のモデルで使用されています。
+not found: 見つかりませんでした。
+not implemented: 未実装です。
+not implemented yet: 未実装です。
+not locked: ロックされていません。
+not verified user: 未認証のユーザーです。
+nothing is updated: アップデートされた項目はありません。
+one or more items not found: 対象のアイテムが見つかりませんでした。
+only requests with status waiting can be approved: レビュー待ちのリクエストのみ承認可能です。
+only reviewers can approve: レビュワーのみ承認可能です。
+operation denied: 操作が拒否されました。
+owner user cannot leave from the workspace: オーナーはワークスペースを抜けることができません。
+password at least 8 characters: パスワードは最低８文字必要です。
+password should have lower case letters: パスワードには小文字を含める必要があります。
+password should have numbers: パスワードには数字を含める必要があります。
+password should have upper case letters: パスワードには大文字を含める必要があります。
+personal workspace cannot be modified: パーソナルワークスペースは変更できません。
+project alias is already used by another project: プロジェクトエイリアスはすでに別のプロジェクトで使用されています。
+project alias is not set: プロジェクトエイリアスが設定されていません。
+projectID is required: プロジェクトIDは必須です。
+reviewer should be owner or maintainer: レビュワーはオーナーもしくはメインテイナーである必要があります。
+target user does not exist in the workspace: 対象のユーザーはワークスペースに存在しません。
+target workspace still has some project: 対象のワークスペースにプロジェクトが存在します。
+thread is required: スレッドは必須です。
+title cannot be empty: タイトルは必須です。
+unauthorized: 未認証
+unsupported entity: サポートされていないエンティティ
+user already exists: ユーザーはすでに存在します。
+user already joined: ユーザーはすでに参加しています。
+uuid is required: UUIDは必須です。
+value is required: 値は必須です。
+workspace id is required: ワークスペースIDは必須です。

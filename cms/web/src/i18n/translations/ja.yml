@@ -1,0 +1,341 @@
+Download: ダウンロード
+Loading: ローディング中
+Oops!: ''
+PAGE NOT FOUND ON SERVER: ページが見つかりません。
+Go back Home: ホームへ戻る
+Model: モデル
+Switch: 切り替え
+End point: ''
+Assets: アセット
+Private: 非公開
+Public: 公開
+Accessibility: 公開設定
+Public Scope: 公開
+Choose the scope of your project. This affects all the models shown below that are switched on.: プロジェクトの公開範囲を選択してください。この操作は以下のすべてのモデルに影響します。
+Project Alias: プロジェクトエイリアス
+Save changes: 変更を保存
+Are you sure you want to delete your account?: 本当にアカウントを削除してよろしいですか？
+Danger Zone: 重要操作
+Delete Personal Account: アカウントを削除
+Permanently removes your personal account and all of its contents from Re:Earth CMS. This action is not reversible, so please continue with caution.: アカウントとそれに関連するすべてのコンテンツを削除します。この操作は取り消すことができません。よろしいですか？
+Account Name: アカウント名
+This is your ID that is used between Re:Earth and Re:Earth CMS.: アカウントのIDです。
+Your Email: メールアドレス
+Please enter the email address you want to use to log in with Re:Earth CMS.: ログインに利用するメールアドレスを入力してください。
+Save: 保存
+Account Settings: アカウント設定
+General: 一般
+Service: サービス
+Auto: 自動
+Service Language: 利用言語
+This will change the UI language: UIの言語設定を変更します。
+Language: 言語
+Unzip: ''
+Asset Type: アセットの種類
+Created Time: 作成日時
+Created By: 作成者
+Linked to: ''
+Asset: アセット
+Source Code: ソースコード
+Render: レンダー
+PNG/JPEG/TIFF/GIF: ''
+SVG: ''
+GEOJSON/KML/CZML: ''
+3D Tiles: ''
+MVT: ''
+GLTF/GLB: ''
+Unknown Type: 不明
+Decompressing...: 解凍中
+Failed to decompress. Please check the file and try again.: 解凍に失敗しました。 ファイルを確認して、もう一度お試しください。
+Not supported: プレビュー対応していないデータフォーマットです。
+Decompressed: 解凍完了
+Failed: 失敗
+Decompressing: 解凍中
+Skipped: スキップ
+Pending: ''
+File: ファイル
+Size: サイズ
+Preview Type: プレビュータイプ
+Status: ステータス
+Created At: 作成日時
+ID: ''
+Deselect: 選択解除
+Delete: 削除
+Upload Asset: アセットをアップロード
+Auto Unzip: 自動解凍
+Remove file: ファイルを削除
+Click or drag files to this area to upload: このエリアにファイルをクリックまたはドラッグしてアップロードします
+Single or multiple file upload is supported: 複数のファイルのアップロードが可能です。
+Asset Uploader: アセットアップローダー
+Local: ローカル
+URL: ''
+Cancel: キャンセル
+Uploading: アップロード中
+Upload and Link: アップロードとリンク
+Upload: アップロード
+Please input the URL of the asset!: アセットのURLを入力してください!
+Please input a valid URL: 有効なURLを入力してください
+Could not display svg: svgを表示できませんでした。
+Comment: コメント
+Comments: コメント
+Personal Account: パーソナルアカウント
+Workspaces: ワークスペース
+Create Workspace: ワークスペースを作成
+Logout: ログアウト
+Re:Earth CMS: Re:Earth CMS
+Link Asset: アセットをリンク
+New: 追加
+Project name: プロジェクト名
+Please input the name of project!: プロジェクト名を入力してください
+Project alias: プロジェクトエイリアス
+Please input the alias of project!: プロジェクトのエイリアスを入力してください。
+Project description: プロジェクト概要
+Overview: 概要
+Schema: スキーマ
+Content: コンテンツ
+Request: リクエスト
+Settings: 設定
+Workspace name: ワークスペース名
+Please input the title of the current workspace!: こののワークスペース名を入力してください。
+Home: ホーム
+Member: メンバー
+Integrations: インテグレーション
+My Integrations: マイインテグレーション
+Role: ロール
+API key: APIキー
+Account: アカウント
+unique: ユニーク
+Add to Request: 既存のリクエストに追加
+Unpublish: 非公開
+New Request: 新規リクエスト
+Please input field!: フィールドを入力してください。
+Title: タイトル
+State: ステータス
+Reviewers: レビュワー
+New Item: 新規アイテム
+Please input the title of your request!: リクエストのタイトルを入力してください。
+Description: 説明
+Please select a reviewer!: レビュワーを選択してください。
+Reviewer: レビュワー
+Updated At: 更新日時
+Connect Integration: インテグレーションを連携
+Connect: 連携
+Integration Setting: インテグレーション設定
+Please input the appropriate role for this integration!: このインテグレーションに適切なロールを付与してください
+select role: ロールを選択
+Reader: 閲覧者
+Writer: 編集者
+Maintainer: メインテイナー
+Owner: オーナー
+Name: 名前
+Creator: 作成者
+Remove: 削除
+No Integration yet: まだインテグレーションはありません
+Create a new: 新規作成
+Or read: 読む
+how to use Re:Earth CMS: CMSの使い方
+first: はじめに
+Add member: メンバー追加
+Add to workspace: ワークスペースに追加
+Email address or user name: Emailアドレスもしくはユーザー名
+Selected Members: 選択中のメンバー
+Role Settings: ロール設定
+Please input the appropriate role for this member!: このメンバーに付与するロールを入力してください
+Models: モデル
+Add: 追加
+New Integration: 新規インテグレーション
+Create: 作成
+Integration Name: インテグレーション名
+Please input the title of the integration!: インテグレーションの名前を入力してください
+Create new integration: 新規インテグレーション作成
+Are you sure to remove this integration?: 本当にこのインテグレーションを削除してよろしいですか？
+Permanently remove your Integration and all of its contents from the Re:Earth CMS.: インテグレーションを削除します。
+Once the integration is removed, it will disappear from all workspaces.: インテグレーション削除すると、このインテグレーションを利用しているすべてのワークスペースから取り除かれます。
+Remove Integration: インテグレーションを削除
+Permanently remove your Integration and all of its contents from the Re:Earth CMS. This action is not reversible – please continue with caution.: インテグレーションを削除します。この操作は取り消すことができません。
+Integration Token: インテグレーショントークン
+Code Example: ''
+your model id here: ''
+Update: アップデート
+Publish: 公開
+Decompress: 圧縮
+This is your webhook name: Webhookの名前です
+Please input the name of the webhook!: Webhookの名前を入力してください
+Url: URL
+Please note that all webhook URLs must start with http://.: WebhookのURLがhttp://で始まることを確認してください
+URL is not valid: 無効なURLです
+Secret: 選択
+This secret will be used to sign Webhook request: このシークレットはWebhookのリクエストを署名する時に使用されます。
+Please input secret!: シークレットを入力してください。
+Trigger Event: イベント
+Item: アイテム
+New Webhook: 新規Webhook
+No Webhook yet: Webhookはまだありません
+'Create a new ': 新規作成
+No Projects Yet: プロジェクトがありません
+Create a new project: 新規プロジェクトを作成
+New Project: 新規プロジェクト
+New Model: 新規モデル
+Edit: 編集
+Delete Model: モデルを削除
+Are you sure you want to delete the model: 本当にこのモデルを削除してよろしいですか？
+Warning: 注意
+This action will permanently delete the selected model and cannot be reversed.: 選択中のモデルを削除します。この操作は取り消すことができません。
+Close: クローズ
+Reopen: ''
+Approve: 承認
+Approved: 承認済み
+Closed: クローズ済み
+DRAFT: ドラフト
+APPROVED: 承認済
+CLOSED: クローズ済
+WAITING: レビュー待ち
+Current user: 現在のユーザー
+Text: テキスト
+Boolean: ''
+Select: セレクト
+Number: 数値
+Add Field: フィールドを追加
+Display name: 表示名
+Please input the display name of field!: このフィールドの表示名を入力してください
+Field key must be unique and at least 1 character long. It can only contain letters, numbers, underscores and dashes.: フィールドのキーは1文字以上かつ一意である必要があります。アンダースコア、ダッシュ、文字、数値が利用できます。
+Key is not valid: 無効なキーです
+Set Options: オプションを設定
+Stores a list of values instead of a single value: このフィールドに複数の値をリスト形式で設定します
+Support multiple values: 複数値の設定を許可
+Prevents saving an entry if this field is empty: このフィールドを必須項目とします
+Make field required: このフィールドを必須項目にする
+Ensures that a multiple entries can't have the same value for this field: 複数のアイテム間でこのフィールドの値がユニークであることを担保します
+Set field as unique: ユニーク制約
+Default value: デフォルト値
+Set default value: デフォルト値を設定
+Default value must be a valid URL and start with 'http://' or 'https://'.: デフォルト値はhttp://もしくはhttps://で始まる有効なURLである必要があります。
+Field key must be unique and at least 1 characters long. It can only contain letters, numbers, underscores and dashes.: フィールドのキーは1文字以上かつ一意である必要があります。アンダースコア、ダッシュ、文字、数値が利用できます。
+Validation: バリデーション
+Ensures that multiple entries can't have the same value for this field: このフィールドには同じ値のエントリーを持つことができません。
+Set maximum length: 最大長
+Set minimum value: 最小値
+Set maximum value: 最大値
+Heading and titles, one-line field: タイトルなどに利用する1行のフィールドです。
+TextArea: テキストエリア
+Multi line text: 複数行テキスト
+Markdown text: マークダウン
+Rich text which supports md style: マークダウン対応のリッチテキスト
+Asset file: アセット
+true/false field: ''
+Option: 選択
+Multiple select: 複数選択
+Int: 整数値
+Integer: 整数値
+http/https URL: URL
+Are you sure you want to delete this field?: このフィールドを削除します、よろしいですか？
+Update Model: モデルを更新
+Model name: モデル名
+Please input the name of the model!: このモデル名を入力してください
+Model description: モデル概要
+Model key: モデルキー
+Model key must be unique and at least 1 character long. It can only contain letters, numbers, underscores and dashes.: モデルのキーは1文字以上かつ一意である必要があります。アンダースコア、ダッシュ、文字、数値が利用できます。
+Welcome to Re:Earth CMS !: ようこそ！Re:Earth CMSへ
+search projects: 検索
+Create a Workspace: 新規ワークスペース
+Are you sure you want to delete this workspace?: このワークスペースを削除します。よろしいですか？
+Remove Workspace: ワークスペースを削除
+Permanently removes the current workspace and all of its contents from Re:Earth CMS. This action is not reversible, so please continue with caution.: 現在のワークスペースを削除します。ワークスペースに関連するすべてのデータが削除されます。この操作を取り消すことはできません。
+Workspace Name: ワークスペース名
+This is the name that will be visible within Re:Earth and Re:Earth CMS. This could be your company's name, department's name, the theme of your projects, etc.: ワークスペース名はワークスペースを判別するために表示されます。あなたの会社名、部署名、その他プロジェクトのテーマなどを利用することをお勧めします。
+Workspace Settings: ワークスペース設定
+Failed to update user.: ユーザーの更新に失敗しました。
+Successfully updated user!: ユーザーの更新に成功しました。
+Failed to update language.: 言語設定の更新に失敗しました。
+Successfully updated language!: 言語設定の更新に成功しました。
+Failed to delete user.: ユーザーの削除に失敗しました。
+Successfully deleted user!: ユーザーの削除に成功しました。
+Failed to update asset.: アセットの更新に失敗しました。
+Asset was successfully updated!: アセットの更新に成功しました。
+Failed to decompress asset.: ''
+Asset is being decompressed!: ''
+Failed to add one or more assets.: アセットの追加に失敗しました。
+Successfully added one or more assets!: アセットの追加に成功しました。
+Successfully added asset!: アセットの追加に成功しました。
+Failed to add asset.: アセットを追加に失敗しました。
+Failed to delete one or more assets.: アセットの削除に失敗しました。
+One or more assets were successfully deleted!: アセットの削除に成功しました。
+No comments.: コメントはありません。
+Please click the comment bubble in the table to check comments.: コメントを確認するには、表のコメントアイコンををクリックしてください。
+Successfully created workspace!: ワークスペースの作成に成功しました。
+Failed to create comment.: コメントの作成に失敗しました。
+Successfully created comment!: コメントの作成に成功しました。
+Failed to update comment.: コメントの更新に失敗しました。
+Successfully updated comment!: コメントの更新に成功しました。
+Failed to delete comment.: コメントの削除に失敗しました。
+Successfully deleted comment!: コメントの削除に成功しました。
+Failed to update publication settings.: 公開設定の更新に失敗しました。
+Successfully updated publication settings!: 公開設定の更新に更新に成功しました。
+Failed to create item.: アイテムの作成に失敗しました。
+Successfully created Item!: アイテムの作成に成功しました。
+Failed to update item.: アイテムの更新に失敗しました。
+Successfully updated Item!: アイテムの更新に成功しました。
+Failed to create request.: リクエストの作成に失敗しました。
+Successfully created request!: リクエストの作成に成功しました。
+Failed to update request.: リクエストの更新に失敗しました。
+Successfully updated request!: リクエストの更新に成功しました。
+Failed to delete one or more items.: アイテムの削除に失敗しました。
+One or more items were successfully deleted!: アイテムの削除に成功しました。
+Successfully updated Request!: リクエストの更新に成功しました。
+Failed to unpublish items.: ''
+Successfully unpublished items!: ''
+Failed to create model.: モデルの作成に失敗しました。
+Successfully created model!: モデルの作成に成功しました。
+Failed to delete model.: モデルの削除に失敗しました。
+Successfully deleted model!: モデルの削除に成功しました。
+Failed to update model.: モデルの更新に失敗しました。
+Successfully updated model!: モデルの更新に成功しました。
+Failed to delete one or more requests.: リクエストの削除に失敗しました。
+One or more requests were successfully closed!: リクエストのクローズに成功しました。
+Failed to approve request.: リクエストの承認に失敗しました。
+Successfully approved request!: リクエストの承認に成功しました。
+Failed to delete field.: フィールドの削除に失敗しました。
+Successfully deleted field!: フィールドの削除に成功しました。
+Failed to update field.: フィールドの更新に失敗しました。
+Successfully updated field!: フィールドの更新に成功しました。
+Failed to create field.: フィールドの作成に失敗しました。
+Successfully created field!: フィールドの作成に成功しました。
+Failed to update project.: プロジェクトの更新に失敗しました。
+Successfully updated project!: プロジェクトの更新に成功しました。
+Failed to delete project.: プロジェクトの削除に失敗しました。
+Successfully deleted project!: プロジェクトの削除に成功しました。
+Are you sure you want to delete this project?: 本当にプロジェクトを削除してもよろしいですか？
+Write something here to describe this record.: このレコードの説明を入力してください
+Delete project: プロジェクト削除
+Failed to connect integration.: インテグレーションの接続に失敗しました。
+Successfully connected integration to the workspace!: インテグレーションの接続に成功しました。
+Failed to update workspace integration.: ワークスペースのインテグレーションの更新に失敗しました。
+Successfully updated workspace integration!: ワークスペースのインテグレーションの更新に成功しました。
+Failed to delete one or more intagrations.: インテグレーションの削除に失敗しました。
+One or more integrations were successfully deleted!: インテグレーションの削除に成功しました。
+Failed to add one or more members.: メンバーの追加に失敗しました。
+Successfully added member(s) to the workspace!: メンバーの追加に成功しました。
+Failed to delete member from the workspace.: メンバーの削除に失敗しました。
+Successfully removed member from the workspace!: メンバーの削除に成功しました。
+Are you sure to remove this member?: 本当にメンバーをこのワークスペースから削除してもよろしいですか？
+Remove this member from workspace means this member will not view any content of this workspace.: メンバーをワークスペースから削除すると、そのメンバーはワークスペース内のいかなるコンテンツも閲覧することができなくなります。
+Change Role?: ロールを変更
+Members: メンバー
+New Member: メンバーを追加
+search for a member: 検索
+Failed to delete integration.: インテグレーションの削除に失敗しました。
+Successfully deleted integration!: インテグレーションの削除に成功しました。
+Failed to create webhook.: Webhookの作成に失敗しました。
+Successfully created webhook!: Webhookの作成に成功しました。
+Failed to delete webhook.: Webhookの削除に失敗しました。
+Successfully deleted webhook!: Webhookの削除に成功しました。
+Failed to update webhook.: Webhookの更新に失敗しました。
+Successfully updated webhook!: Webhookの更新に成功しました。
+Failed to create integration.: インテグレーションの作成に失敗しました。
+Successfully created integration!: インテグレーションの作成に成功しました。
+Failed to create project.: プロジェクトの作成に失敗しました。
+Successfully created project!: プロジェクトの作成に成功しました。
+Failed to update workspace.: ワークスペースの更新に失敗しました。
+Successfully updated workspace!: ワークスペースの更新に成功しました。
+Failed to delete workspace.: ワークスペースの削除に失敗しました。
+Successfully deleted workspace!: ワークスペースの削除に成功しました。

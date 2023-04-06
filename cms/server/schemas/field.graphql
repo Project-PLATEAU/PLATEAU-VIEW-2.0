@@ -1,0 +1,229 @@
+enum SchemaFieldType {
+  Text
+  TextArea
+  RichText
+  MarkdownText
+  Asset
+  Date
+  Bool
+  Select
+  Tag
+  Integer
+  Reference
+  URL
+}
+
+type SchemaField {
+  id: ID!
+  modelId: ID!
+  model: Model!
+  type: SchemaFieldType!
+  typeProperty: SchemaFieldTypeProperty
+  key: String!
+  title: String!
+  order: Int
+  description: String
+
+  multiple: Boolean!
+  unique: Boolean!
+  required: Boolean!
+
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+union SchemaFieldTypeProperty =
+  SchemaFieldText
+  | SchemaFieldTextArea
+  | SchemaFieldRichText
+  | SchemaFieldMarkdown
+  | SchemaFieldAsset
+  | SchemaFieldDate
+  | SchemaFieldBool
+  | SchemaFieldSelect
+  | SchemaFieldTag
+  | SchemaFieldInteger
+  | SchemaFieldReference
+  | SchemaFieldURL
+
+
+type SchemaFieldText {
+  defaultValue: Any
+  maxLength: Int
+}
+
+type SchemaFieldTextArea {
+  defaultValue: Any
+  maxLength: Int
+}
+
+type SchemaFieldRichText {
+  defaultValue: Any
+  maxLength: Int
+}
+
+type SchemaFieldMarkdown {
+  defaultValue: Any
+  maxLength: Int
+}
+
+type SchemaFieldAsset {
+  defaultValue: Any
+}
+
+type SchemaFieldDate {
+  defaultValue: Any
+}
+
+type SchemaFieldBool {
+  defaultValue: Any
+}
+
+type SchemaFieldSelect {
+  values: [String!]!
+  defaultValue: Any
+}
+
+type SchemaFieldTag {
+  values: [String!]!
+  defaultValue: Any
+}
+
+type SchemaFieldInteger {
+  defaultValue: Any
+  min: Int
+  max: Int
+}
+
+type SchemaFieldReference {
+  modelId: ID!
+}
+
+type SchemaFieldURL {
+  defaultValue: Any
+}
+
+# Inputs
+
+input SchemaFieldTextInput {
+  defaultValue: Any
+  maxLength: Int
+}
+
+input SchemaFieldTextAreaInput {
+  defaultValue: Any
+  maxLength: Int
+}
+
+input SchemaFieldRichTextInput {
+  defaultValue: Any
+  maxLength: Int
+}
+
+input SchemaMarkdownTextInput {
+  defaultValue: Any
+  maxLength: Int
+}
+
+input SchemaFieldAssetInput {
+  defaultValue: Any
+}
+
+input SchemaFieldDateInput {
+  defaultValue: Any
+}
+
+input SchemaFieldBoolInput {
+  defaultValue: Any
+}
+
+input SchemaFieldSelectInput {
+  values: [String!]!
+  defaultValue: Any
+}
+
+input SchemaFieldTagInput {
+  values: [String!]!
+  defaultValue: Any
+}
+
+input SchemaFieldIntegerInput {
+  defaultValue: Any
+  min: Int
+  max: Int
+}
+
+input SchemaFieldReferenceInput {
+  modelId: ID!
+}
+
+input SchemaFieldURLInput {
+  defaultValue: Any
+}
+
+input SchemaFieldTypePropertyInput @onlyOne {
+  text: SchemaFieldTextInput
+  textArea: SchemaFieldTextAreaInput
+  richText: SchemaFieldRichTextInput
+  markdownText: SchemaMarkdownTextInput
+  asset: SchemaFieldAssetInput
+  date: SchemaFieldDateInput
+  bool: SchemaFieldBoolInput
+  select: SchemaFieldSelectInput
+  tag: SchemaFieldTagInput
+  integer: SchemaFieldIntegerInput
+  reference: SchemaFieldReferenceInput
+  url: SchemaFieldURLInput
+}
+
+input CreateFieldInput {
+  modelId: ID!
+  type: SchemaFieldType!
+  title: String!
+  description: String
+  key: String!
+  multiple: Boolean!
+  unique: Boolean!
+  required: Boolean!
+  typeProperty: SchemaFieldTypePropertyInput!
+}
+
+input UpdateFieldInput {
+  modelId: ID!
+  fieldId: ID!
+  title: String
+  description: String
+  order: Int
+  key: String
+  required: Boolean
+  unique: Boolean
+  multiple: Boolean
+  typeProperty: SchemaFieldTypePropertyInput
+}
+
+input DeleteFieldInput {
+  modelId: ID!
+  fieldId: ID!
+}
+
+# Payloads
+type FieldPayload {
+  field: SchemaField!
+}
+
+type FieldsPayload {
+  fields: [SchemaField!]!
+}
+
+type DeleteFieldPayload {
+  fieldId: ID!
+}
+
+# extend type Query {}
+
+extend type Mutation {
+  createField(input: CreateFieldInput!): FieldPayload
+  updateField(input: UpdateFieldInput!): FieldPayload
+  updateFields(input: [UpdateFieldInput!]!): FieldsPayload
+  deleteField(input: DeleteFieldInput!): DeleteFieldPayload
+}

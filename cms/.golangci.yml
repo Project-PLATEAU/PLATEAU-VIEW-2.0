@@ -1,0 +1,4 @@
+linters:
+  enable-all: false
+run:
+  timeout: 5m

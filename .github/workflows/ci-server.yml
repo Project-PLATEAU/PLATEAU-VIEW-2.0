@@ -1,0 +1,67 @@
+name: ci-server
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - server/**
+      - .github/workflows/ci-server.yml
+      - .github/workflows/build-server.yml
+      - .github/workflows/deploy-server-dev.yml
+      - .github/workflows/deploy-server-prod.yml
+  pull_request:
+    paths:
+      - server/**
+      - .github/workflows/ci-server.yml
+      - .github/workflows/build-server.yml
+      - .github/workflows/deploy-server-dev.yml
+      - .github/workflows/deploy-server-prod.yml
+jobs:
+  ci:
+    name: ci
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
+    steps:
+      - uses: actions/setup-go@v3
+        with:
+          go-version: 1.19
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: cache
+        uses: actions/cache@v2
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v3
+        with:
+          version: v1.49
+          working-directory: server
+          args: --timeout=5m
+      - name: test
+        run: go test ./... -v -race
+
+      # indexer test
+      - name: 'indexer test: is testdata available'
+        id: testdata
+        run: echo $TESTDATA >> $GITHUB_OUTPUT
+        env:
+          TESTDATA: ${{ secrets.TESTDATA && 'testdata=1' || 'testdata=' }}
+      - name: 'indexer test: download test 3D Tiles data'
+        if: steps.testdata.outputs.testdata
+        run: curl -O $TESTDATA && mkdir -p searchindex/indexer/testdata && unzip -d searchindex/indexer/testdata "${TESTDATA##*/}"
+        env:
+          TESTDATA: ${{ secrets.TESTDATA }}
+      - name: 'indexer test: run indexer test'
+        if: steps.testdata.outputs.testdata
+        run: go test ./searchindex/indexer -v
+      - name: 'indexer test: list result files'
+        if: steps.testdata.outputs.testdata
+        run: ls searchindex/indexer/testdata/result
+      - name: 'indexer test: cat resultsData.csv'
+        if: steps.testdata.outputs.testdata
+        run: cat searchindex/indexer/testdata/result/resultsData.csv

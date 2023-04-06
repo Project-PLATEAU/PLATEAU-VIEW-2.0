@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<title></title>
+<style>
+  html{
+    background: transparent;
+    margin: 0;
+    overflow: hidden;
+    width: auto;
+    height: auto;
+  }
+  body{
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+  }
+  .root{
+    position: relative;
+    display: flex;
+    flex: 1;
+    /* set the target position on minimized */
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+
+  *::-webkit-scrollbar {
+    display: block;
+    width: 6px;
+    height: 6px;
+  }
+  *::-webkit-scrollbar-button {
+    display: none;
+  }
+  *::-webkit-scrollbar-track {
+    background-color: #00000000;
+  }
+  *::-webkit-scrollbar-track-piece {
+    background-color: #00000000;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: #00000040;
+    border-radius: 3px;
+  }
+</style>
+<body>
+  <div class="root" id="root"></div>
+</body>
+<script type="module" src="./main.tsx"></script>

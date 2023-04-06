@@ -1,0 +1,37 @@
+<title></title>
+<style>
+    html, body{
+        background: transparent;
+        font-family: 'Roboto', sans-serif;
+    }
+    .root{
+        background: #fff;
+        border-radius: 0 0 8px 0;
+    }
+    html, body, .root {
+        width: 350px;
+        height: 100%;
+        transition: height 0.5s, width 0.5s;
+        border-radius: 0;
+    }
+    .extended{
+        height: 100%;
+    }
+    .minimized{
+        width: 227px;
+        height: 80px;
+        border-radius: 0 0 8px 0;
+    }
+    .mobile{
+        width: 100%;
+        height: 56px;
+        border-radius: 0 0 8px 0;
+    }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<body>
+    <div class="root" id="root"></div>
+</body>
+<script type="module" src="./main.tsx"></script>

@@ -1,0 +1,125 @@
+type Item implements Node {
+  id: ID!
+  schemaId: ID!
+  threadId: ID!
+  modelId: ID!
+  projectId: ID!
+  integrationId: ID
+  userId: ID
+  integration: Integration
+  user: User
+  schema: Schema!
+  model: Model!
+  status: ItemStatus!
+  project: Project!
+  thread: Thread!
+  fields: [ItemField!]!
+  assets: [Asset]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type ItemField {
+  schemaFieldId: ID!
+  type: SchemaFieldType!
+  value: Any
+}
+
+type VersionedItem {
+  version: String!
+  parents: [String!]
+  refs: [String!]!
+  value: Item!
+}
+
+enum ItemStatus {
+  DRAFT
+  PUBLIC
+  REVIEW
+  PUBLIC_REVIEW
+  PUBLIC_DRAFT
+}
+
+# Inputs
+input ItemFieldInput {
+  schemaFieldId: ID!
+  type: SchemaFieldType!
+  value: Any!
+}
+
+input CreateItemInput {
+  schemaId: ID!
+  modelId: ID!
+  fields: [ItemFieldInput!]!
+}
+
+input UpdateItemInput {
+  itemId: ID!
+  fields: [ItemFieldInput!]!
+}
+
+input DeleteItemInput {
+  itemId: ID!
+}
+
+input UnpublishItemInput {
+  itemId: [ID!]!
+}
+
+# Payloads
+type ItemPayload {
+  item: Item!
+}
+
+type DeleteItemPayload {
+  itemId: ID!
+}
+
+type UnpublishItemPayload {
+  items: [Item!]!
+}
+
+type ItemConnection {
+  edges: [ItemEdge!]!
+  nodes: [Item]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type ItemEdge {
+  cursor: Cursor!
+  node: Item
+}
+
+enum ItemSortType {
+  CREATION_DATE
+  MODIFICATION_DATE
+}
+
+input ItemSort {
+  sortBy: ItemSortType!
+  direction: SortDirection
+}
+
+input ItemQuery {
+  project: ID!
+  schema: ID
+  q: String
+}
+
+extend type Query {
+  items(schemaId: ID!, sort: ItemSort, pagination: Pagination): ItemConnection!
+  versionsByItem(itemId: ID!): [VersionedItem!]!
+  searchItem(
+    query: ItemQuery!
+    sort: ItemSort
+    pagination: Pagination
+  ): ItemConnection!
+}
+
+extend type Mutation {
+  createItem(input: CreateItemInput!): ItemPayload
+  updateItem(input: UpdateItemInput!): ItemPayload
+  deleteItem(input: DeleteItemInput!): DeleteItemPayload
+  unpublishItem(input: UnpublishItemInput!): UnpublishItemPayload
+}

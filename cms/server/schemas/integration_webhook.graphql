@@ -1,0 +1,75 @@
+type WebhookTrigger {
+  onItemCreate: Boolean
+  onItemUpdate: Boolean
+  onItemDelete: Boolean
+  onItemPublish: Boolean
+  onItemUnPublish: Boolean
+  onAssetUpload: Boolean
+  onAssetDecompress: Boolean
+  onAssetDelete: Boolean
+}
+
+type Webhook {
+  id: ID!
+  name: String!
+  url: URL!
+  active: Boolean!
+  trigger: WebhookTrigger!
+  secret: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+# Inputs
+
+input WebhookTriggerInput {
+  onItemCreate: Boolean
+  onItemUpdate: Boolean
+  onItemDelete: Boolean
+  onItemPublish: Boolean
+  onItemUnPublish: Boolean
+  onAssetUpload: Boolean
+  onAssetDecompress: Boolean
+  onAssetDelete: Boolean
+}
+
+input CreateWebhookInput {
+  integrationId: ID!
+  name: String!
+  url: URL!
+  active: Boolean!
+  trigger: WebhookTriggerInput!
+  secret: String!
+}
+
+input UpdateWebhookInput {
+  integrationId: ID!
+  webhookId: ID!
+  name: String
+  url: URL
+  active: Boolean
+  trigger: WebhookTriggerInput
+  secret: String
+}
+
+input DeleteWebhookInput {
+  integrationId: ID!
+  webhookId: ID!
+}
+
+# Payload
+type WebhookPayload {
+  webhook: Webhook!
+}
+
+type DeleteWebhookPayload {
+  webhookId: ID!
+}
+
+# extend type Query {}
+
+extend type Mutation {
+  createWebhook(input: CreateWebhookInput!): WebhookPayload
+  updateWebhook(input: UpdateWebhookInput!): WebhookPayload
+  deleteWebhook(input: DeleteWebhookInput!): DeleteWebhookPayload
+}

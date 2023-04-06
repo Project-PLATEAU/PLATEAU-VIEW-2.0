@@ -1,0 +1,49 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+import assetHooks from "@reearth/components/organisms/Common/AssetContainer/hooks";
+import { useTeam, useProject } from "@reearth/state";
+
+export type Params = {
+  teamId: string;
+};
+
+export default (params: Params) => {
+  const navigate = useNavigate();
+  const [currentTeam] = useTeam();
+  const [currentProject] = useProject();
+
+  const {
+    assets,
+    isLoading,
+    hasMoreAssets,
+    sort,
+    searchTerm,
+    handleGetMoreAssets,
+    createAssets,
+    handleSortChange,
+    handleSearchTerm,
+    removeAssets,
+  } = assetHooks(currentTeam?.id);
+
+  useEffect(() => {
+    if (params.teamId && currentTeam?.id && params.teamId !== currentTeam.id) {
+      navigate(`/settings/workspaces/${currentTeam?.id}/asset`);
+    }
+  }, [params, currentTeam, navigate]);
+
+  return {
+    currentProject,
+    currentTeam,
+    assets,
+    isLoading,
+    hasMoreAssets,
+    sort,
+    searchTerm,
+    handleGetMoreAssets,
+    createAssets,
+    handleSortChange,
+    handleSearchTerm,
+    removeAssets,
+  };
+};

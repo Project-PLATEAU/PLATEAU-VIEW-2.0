@@ -1,0 +1,118 @@
+type Asset implements Node {
+  id: ID!
+  project: Project!
+  projectId: ID!
+  createdAt: DateTime!
+  createdBy: Operator!
+  createdByType: OperatorType!
+  createdById: ID!
+  items: [AssetItem!]
+  size: FileSize!
+  previewType: PreviewType
+  uuid: String!
+  thread: Thread
+  threadId: ID!
+  url: String!
+  archiveExtractionStatus: ArchiveExtractionStatus
+}
+type AssetItem {
+  itemId: ID!
+  modelId: ID!
+}
+
+type AssetFile {
+  name: String!
+  size: FileSize!
+  contentType: String
+  path: String!
+  children: [AssetFile!]
+}
+
+enum PreviewType {
+  IMAGE
+  IMAGE_SVG
+  GEO
+  GEO_3D_TILES
+  GEO_MVT
+  MODEL_3D
+  UNKNOWN
+}
+
+enum ArchiveExtractionStatus {
+  SKIPPED
+  PENDING
+  IN_PROGRESS
+  DONE
+  FAILED
+}
+
+input CreateAssetInput {
+  projectId: ID!
+  file: Upload
+  url: String
+  skipDecompression: Boolean
+}
+
+input UpdateAssetInput {
+  id: ID!
+  previewType: PreviewType
+}
+
+input DeleteAssetInput {
+  assetId: ID!
+}
+
+input DecompressAssetInput {
+  assetId: ID!
+}
+
+type CreateAssetPayload {
+  asset: Asset!
+}
+
+type UpdateAssetPayload {
+  asset: Asset!
+}
+
+type DeleteAssetPayload {
+  assetId: ID!
+}
+
+type DecompressAssetPayload {
+  asset: Asset!
+}
+
+type AssetConnection {
+  edges: [AssetEdge!]!
+  nodes: [Asset]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type AssetEdge {
+  cursor: Cursor!
+  node: Asset
+}
+
+enum AssetSortType {
+  DATE
+  SIZE
+  NAME
+}
+
+input AssetSort {
+  sortBy: AssetSortType!
+  direction: SortDirection
+}
+
+extend type Query {
+  assetFile(assetId: ID!): AssetFile!
+  assets(projectId: ID!, keyword: String, sort: AssetSort, pagination: Pagination): AssetConnection!
+}
+
+extend type Mutation {
+  createAsset(input: CreateAssetInput!): CreateAssetPayload
+  updateAsset(input: UpdateAssetInput!): UpdateAssetPayload
+  deleteAsset(input: DeleteAssetInput!): DeleteAssetPayload
+  decompressAsset(input: DecompressAssetInput!): DecompressAssetPayload
+}

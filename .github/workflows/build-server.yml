@@ -1,0 +1,40 @@
+name: build-server
+on:
+  workflow_run:
+    workflows: [ci-server]
+    types: [completed]
+    branches: [main]
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.workflow_run.head_branch }}
+  cancel-in-progress: true
+jobs:
+  docker:
+    name: Build and push Docker image
+    runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: ghcr.io/eukarya-inc/reearth-plateauview/plateauview-api:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Build and load docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: ./server
+          platforms: linux/amd64
+          load: true
+          tags: ${{ env.IMAGE_NAME }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          push: false
+      - name: Save docker image
+        run: docker save ${{ env.IMAGE_NAME }} | gzip > plateauview-api.tar.gz
+      - name: Save imaged to artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: plateauview-api
+          path: plateauview-api.tar.gz
+          if-no-files-found: error

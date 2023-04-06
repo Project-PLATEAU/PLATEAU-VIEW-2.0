@@ -1,0 +1,1045 @@
+openapi: 3.0.3
+info:
+  title: ReEarth-CMS Integration API
+  description: ReEarth-CMS Integration API
+  version: 1.0.0
+paths:
+  '/models/{modelId}':
+    parameters:
+      - $ref: '#/components/parameters/modelIdParam'
+    get:
+      operationId: ModelGet
+      security:
+        - bearerAuth: []
+      summary: Returns a model.
+      tags:
+        - Models
+      description: Returns a model.
+      responses:
+        '200':
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/model'
+        '400':
+          description: Invalid request parameter value
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Not found
+        '500':
+          description: Internal server error
+  '/models/{modelId}/items':
+    parameters:
+      - $ref: '#/components/parameters/modelIdParam'
+    get:
+      operationId: ItemFilter
+      security:
+        - bearerAuth: []
+      summary: Returns a list of items.
+      tags:
+        - Items
+      description: Returns a list of items with filtering and ordering.
+      parameters:
+        - $ref: '#/components/parameters/sortParam'
+        - $ref: '#/components/parameters/sortDirParam'
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
+        - $ref: '#/components/parameters/refParam'
+        - $ref: '#/components/parameters/assetParam'
+      responses:
+        '200':
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/versionedItem'
+                  totalCount:
+                    type: integer
+                    minimum: 0
+                  page:
+                    type: integer
+                    minimum: 1
+                  perPage:
+                    type: integer
+                    minimum: 1
+        '400':
+          description: Invalid request parameter value
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Not found
+        '500':
+          description: Internal server error
+    post:
+      operationId: ItemCreate
+      summary: create an item
+      tags:
+        - Items
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fields:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/field'
+      responses:
+        '200':
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versionedItem'
+        '400':
+          description: Invalid request parameter value
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  '/projects/{projectIdOrAlias}/models/{modelIdOrKey}':
+    parameters:
+      - $ref: '#/components/parameters/projectIdOrAliasParam'
+      - $ref: '#/components/parameters/modelIdOrKeyParam'
+    get:
+      operationId: ModelGetWithProject
+      security:
+        - bearerAuth: []
+      summary: Returns a model.
+      tags:
+        - Models
+      description: Returns a model.
+      responses:
+        '200':
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/model'
+        '400':
+          description: Invalid request parameter value
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Not found
+        '500':
+          description: Internal server error
+  '/projects/{projectIdOrAlias}/models/{modelIdOrKey}/items':
+    parameters:
+      - $ref: '#/components/parameters/projectIdOrAliasParam'
+      - $ref: '#/components/parameters/modelIdOrKeyParam'
+    get:
+      operationId: ItemFilterWithProject
+      security:
+        - bearerAuth: []
+      summary: Returns a list of items.
+      tags:
+        - Project items
+      description: Returns a list of items with filtering and ordering.
+      parameters:
+        - $ref: '#/components/parameters/sortParam'
+        - $ref: '#/components/parameters/sortDirParam'
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
+        - $ref: '#/components/parameters/refParam'
+        - $ref: '#/components/parameters/assetParam'
+      responses:
+        '200':
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/versionedItem'
+                  totalCount:
+                    type: integer
+                    minimum: 0
+                  page:
+                    type: integer
+                    minimum: 1
+                  perPage:
+                    type: integer
+                    minimum: 1
+        '400':
+          description: Invalid request parameter value
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Not found
+        '500':
+          description: Internal server error
+    post:
+      operationId: ItemCreateWithProject
+      tags:
+        - Project items
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fields:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/field'
+      responses:
+        '200':
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versionedItem'
+        '400':
+          description: Invalid request parameter value
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  '/items/{itemId}':
+    parameters:
+      - $ref: '#/components/parameters/itemIdParam'
+    get:
+      operationId: ItemGet
+      security:
+        - bearerAuth: []
+      summary: Returns an items.
+      tags:
+        - Items
+      description: Returns an item.
+      parameters:
+        - $ref: '#/components/parameters/refParam'
+        - $ref: '#/components/parameters/assetParam'
+      responses:
+        '200':
+          description: An item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versionedItem'
+        '400':
+          description: Invalid request parameter value
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Not found
+        '500':
+          description: Internal server error
+    patch:
+      operationId: ItemUpdate
+      security:
+        - bearerAuth: []
+      summary: Update an item.
+      tags:
+        - Items
+      description: Update an item.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fields:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/field'
+                asset:
+                  $ref: '#/components/schemas/assetEmbedding'
+      responses:
+        '200':
+          description: An item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versionedItem'
+        '400':
+          description: Invalid request parameter value
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Not found
+        '500':
+          description: Internal server error
+    delete:
+      operationId: ItemDelete
+      summary: delete an item
+      tags:
+        - Items
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: delete an item
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    x-go-type: id.ItemID
+                    type: string
+        '400':
+          description: Invalid request parameter value
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Not found
+  '/items/{itemId}/comments':
+    parameters:
+      - $ref: '#/components/parameters/itemIdParam'
+    get:
+      operationId: ItemCommentList
+      tags:
+        - Comments
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: item comments list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  comments:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/comment'
+        '400':
+          description: Invalid request parameter value
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Not found
+    post:
+      operationId: ItemCommentCreate
+      tags:
+        - Comments
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/comment'
+        '400':
+          description: Invalid request parameter value
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Not found
+  '/items/{itemId}/comments/{commentId}':
+    parameters:
+      - $ref: '#/components/parameters/itemIdParam'
+      - $ref: '#/components/parameters/commentIdParam'
+    patch:
+      operationId: ItemCommentUpdate
+      tags:
+        - Comments
+      security:
+        - bearerAuth: []
+      summary: Update Item Comment
+      description: ''
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+      responses:
+        '200':
+          description: Update An item comment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/comment'
+        '400':
+          description: Invalid request parameter value
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Not found
+    delete:
+      operationId: ItemCommentDelete
+      tags:
+        - Comments
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: delete an item comment
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    x-go-type: id.CommentID
+                    type: string
+        '400':
+          description: Invalid request parameter value
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Not found
+  # '/models/{modelId}/items/{itemId}/refs':
+  #   parameters:
+  #     - $ref: '#/components/parameters/modelIdParam'
+  #     - $ref: '#/components/parameters/itemIdParam'
+  #   post:
+  #     operationId: ItemPublish
+  #     security:
+  #       - bearerAuth: []
+  #     summary: Set ref and version.
+  #     description: Set ref and version for the selected item.
+  #     requestBody:
+  #       required: true
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/refOrVersion'
+  #     responses:
+  #       '200':
+  #         description: An item
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/versionedItem'
+  #       '400':
+  #         description: Invalid request parameter value
+  #       '401':
+  #         $ref: '#/components/responses/UnauthorizedError'
+  '/projects/{projectId}/assets':
+    parameters:
+      - $ref: '#/components/parameters/projectIdParam'
+    get:
+      operationId: AssetFilter
+      tags:
+        - Assets
+      security:
+        - bearerAuth: []
+      summary: Returns a list of assets.
+      description: Returns a list of assets with filtering and ordering.
+      parameters:
+        - $ref: '#/components/parameters/sortParam'
+        - $ref: '#/components/parameters/sortDirParam'
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
+      responses:
+        '200':
+          description: assets list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/asset'
+                  totalCount:
+                    type: integer
+                    minimum: 0
+                  page:
+                    type: integer
+                    minimum: 1
+                  perPage:
+                    type: integer
+                    minimum: 1
+        '400':
+          description: Invalid request parameter value
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Not found
+    post:
+      operationId: AssetCreate
+      tags:
+        - Assets
+      security:
+        - bearerAuth: []
+      summary: Create an new asset.
+      description: Create a new asset and return the created asset.
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                skipDecompression:
+                  type: boolean
+                  nullable: true
+                  default: false
+      responses:
+        '200':
+          description: assets list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/asset'
+        '400':
+          description: Invalid request parameter value
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Not found
+  '/assets/{assetId}':
+    parameters:
+      - $ref: '#/components/parameters/assetIdParam'
+    get:
+      operationId: AssetGet
+      tags:
+        - Assets
+      responses:
+        '200':
+          description: assets list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/asset'
+        '400':
+          description: Invalid request parameter value
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Not found
+    delete:
+      operationId: AssetDelete
+      tags:
+        - Assets
+      responses:
+        '200':
+          description: assets list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    x-go-type: id.AssetID
+                    type: string
+        '400':
+          description: Invalid request parameter value
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Not found
+  '/assets/{assetId}/comments':
+    parameters:
+      - $ref: '#/components/parameters/assetIdParam'
+    get:
+      operationId: AssetCommentList
+      tags:
+        - Asset comments
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: asset comments list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  comments:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/comment'
+        '400':
+          description: Invalid request parameter value
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Not found
+    post:
+      operationId: AssetCommentCreate
+      tags:
+        - Asset comments
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/comment'
+        '400':
+          description: Invalid request parameter value
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Not found
+  '/assets/{assetId}/comments/{commentId}':
+    parameters:
+      - $ref: '#/components/parameters/assetIdParam'
+      - $ref: '#/components/parameters/commentIdParam'
+    patch:
+      operationId: AssetCommentUpdate
+      tags:
+        - Asset comments
+      security:
+        - bearerAuth: []
+      summary: Update AssetComment
+      description: ''
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+      responses:
+        '200':
+          description: Update An asset comment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/comment'
+        '400':
+          description: Invalid request parameter value
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Not found
+    delete:
+      operationId: AssetCommentDelete
+      tags:
+        - Asset comments
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: delete an asset comment
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    x-go-type: id.CommentID
+                    type: string
+        '400':
+          description: Invalid request parameter value
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Not found
+
+components:
+  parameters:
+    projectIdParam:
+      name: projectId
+      in: path
+      description: ID of the selected project within the selected workspace
+      required: true
+      schema:
+        x-go-type: id.ProjectID
+    projectIdOrAliasParam:
+      name: projectIdOrAlias
+      in: path
+      description: ID or alias of the project
+      required: true
+      schema:
+        type: string
+        x-go-type: project.IDOrAlias
+    modelIdParam:
+      name: modelId
+      in: path
+      description: ID of the model in the project
+      required: true
+      schema:
+        type: string
+        x-go-type: id.ModelID
+    modelIdOrKeyParam:
+      name: modelIdOrKey
+      in: path
+      description: ID or key of the model in the project
+      required: true
+      schema:
+        type: string
+        x-go-type: model.IDOrKey
+    itemIdParam:
+      name: itemId
+      in: path
+      description: ID of the selected item
+      required: true
+      schema:
+        type: string
+        x-go-type: id.ItemID
+    assetIdParam:
+      name: assetId
+      in: path
+      description: ID of the selected asset
+      required: true
+      schema:
+        type: string
+        x-go-type: id.AssetID
+    commentIdParam:
+      name: commentId
+      in: path
+      description: ID of the selected comment
+      required: true
+      schema:
+        x-go-type: id.CommentID
+        type: string
+    sortParam:
+      name: sort
+      in: query
+      description: Used to define the order of the response list
+      required: false
+      schema:
+        type: string
+        default: createdAt
+        enum:
+          - createdAt
+          - updatedAt
+    sortDirParam:
+      name: dir
+      in: query
+      description: 'Used to define the order direction of the response list, will be ignored if the order is not presented'
+      required: false
+      schema:
+        type: string
+        default: desc
+        enum:
+          - asc
+          - desc
+    pageParam:
+      name: page
+      in: query
+      description: Used to select the page
+      required: false
+      schema:
+        type: integer
+        default: 1
+        minimum: 1
+    perPageParam:
+      name: perPage
+      in: query
+      description: Used to select the page
+      required: false
+      schema:
+        type: integer
+        default: 50
+        minimum: 1
+        maximum: 100
+    refParam:
+      name: ref
+      in: query
+      description: Used to select a ref or ver
+      required: false
+      schema:
+        type: string
+        default: latest
+        enum:
+          - latest
+          - public
+    assetParam:
+      name: asset
+      in: query
+      description: Specifies whether asset data are embedded in the results
+      schema:
+        $ref: '#/components/schemas/assetEmbedding'
+  schemas:
+    model:
+      type: object
+      properties:
+        id:
+          x-go-type: id.ModelID
+          type: string
+        projectId:
+          x-go-type: id.ProjectID
+          type: string
+        schemaId:
+          x-go-type: id.SchemaID
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        public:
+          type: boolean
+        key:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        lastModified:
+          type: string
+          format: date-time
+    schema:
+      type: object
+      properties:
+        id:
+          x-go-type: id.SchemaID
+          type: string
+        projectId:
+          x-go-type: id.ProjectID
+          type: string
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemaField'
+        createdAt:
+          type: string
+          format: date-time
+    valueType:
+      type: string
+      enum:
+        - text
+        - textArea
+        - richText
+        - markdown
+        - asset
+        - date
+        - bool
+        - select
+        - tag
+        - integer
+        - reference
+        - url
+    schemaField:
+      type: object
+      properties:
+        id:
+          x-go-type: id.FieldID
+          type: string
+        type:
+          $ref: '#/components/schemas/valueType'
+        key:
+          type: string
+        required:
+          type: boolean
+    version:
+      type: object
+      properties:
+        version:
+          type: string
+          format: uuid
+        parents:
+          type: array
+          items:
+            type: string
+            format: uuid
+        refs:
+          type: array
+          items:
+            type: string
+            format: uuid
+    item:
+      type: object
+      properties:
+        id:
+          x-go-type: id.ItemID
+          type: string
+        modelId:
+          type: string
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/field'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    versionedItem:
+      type: object
+      properties:
+        id:
+          x-go-type: id.ItemID
+          type: string
+        modelId:
+          type: string
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/field'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        version:
+          type: string
+          format: uuid
+        parents:
+          type: array
+          items:
+            type: string
+            format: uuid
+        refs:
+          type: array
+          items:
+            type: string
+    field:
+      type: object
+      properties:
+        id:
+          x-go-type: id.FieldID
+          type: string
+        type:
+          $ref: '#/components/schemas/valueType'
+        value: {}
+        key:
+          type: string
+    refOrVersion:
+      type: object
+      properties:
+        ref:
+          type: string
+          enum:
+            - latest
+            - public
+        version:
+          type: string
+          format: uuid
+    assetEmbedding:
+      type: string
+      enum:
+        - all
+        - "true"
+        - "false"
+    asset:
+      type: object
+      required:
+        - id
+        - projectId
+        - url
+        - createdAt
+        - updatedAt
+      properties:
+        id:
+          x-go-type: id.AssetID
+          type: string
+        projectId:
+          x-go-type: id.ProjectID
+          type: string
+        name:
+          type: string
+        url:
+          type: string
+        contentType:
+          type: string
+        previewType:
+          type: string
+          enum:
+            - image
+            - image_svg
+            - geo
+            - geo_3d_Tiles
+            - geo_mvt
+            - model_3d
+            - unknown
+        totalSize:
+          type: number
+        archiveExtractionStatus:
+          type: string
+          enum:
+            - pending
+            - in_progress
+            - done
+            - failed
+        file:
+          $ref: '#/components/schemas/file'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    comment:
+      type: object
+      properties:
+        id:
+          x-go-type: id.CommentID
+          type: string
+        authorId:
+          type: string
+          x-go-type: any
+        authorType:
+          type: string
+          enum:
+            - user
+            - integrtaion
+        content:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    file:
+      type: object
+      properties:
+        name:
+          type: string
+        size:
+          type: number
+        contentType:
+          type: string
+        path:
+          type: string
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/file'
+  responses:
+    UnauthorizedError:
+      description: Access token is missing or invalid
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

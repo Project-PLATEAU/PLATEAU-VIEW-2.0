@@ -1,0 +1,23 @@
+version: '3'
+services:
+  reearth-cms-backend:
+    build:
+      context: .
+    environment:
+      REEARTH_DB: mongodb://reearth-cms-mongo
+    ports:
+      - '8080:8080'
+    # env_file:
+    #   - ./.env
+    links:
+      - reearth-cms-mongo
+    depends_on:
+      - reearth-cms-mongo
+    volumes:
+      - ./data:/reearth/data
+  reearth-cms-mongo:
+    image: mongo:5-focal
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo:/data/db

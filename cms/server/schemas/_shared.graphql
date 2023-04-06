@@ -1,0 +1,98 @@
+# Built-in
+
+union Operator = User | Integration
+
+enum OperatorType {
+  User
+  Integration
+}
+
+scalar Upload
+scalar Any
+
+directive @goModel(
+  model: String
+  models: [String!]
+) on OBJECT | INPUT_OBJECT | SCALAR | ENUM | INTERFACE | UNION
+
+directive @goField(
+  forceResolver: Boolean
+  name: String
+) on INPUT_FIELD_DEFINITION | FIELD_DEFINITION
+
+directive @onlyOne on INPUT_OBJECT
+
+# Meta Type
+
+scalar Cursor
+
+interface Node {
+  id: ID!
+}
+
+enum NodeType {
+  USER
+  WORKSPACE
+  PROJECT
+  ASSET
+  REQUEST
+  Model
+  Schema
+  Item
+  Integration
+}
+
+input Pagination{
+  first: Int
+  last: Int
+  offset: Int
+  after: Cursor
+  before: Cursor
+}
+
+type PageInfo {
+  startCursor: Cursor
+  endCursor: Cursor
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+}
+
+type KeyAvailability {
+  key: String!
+  available: Boolean!
+}
+
+input Sort{
+  key:      String!
+  reverted: Boolean
+}
+
+enum SortDirection {
+  ASC
+  DESC
+}
+
+# Basic types
+
+scalar DateTime
+scalar URL
+scalar Lang
+scalar FileSize
+
+enum Theme {
+  DEFAULT
+  LIGHT
+  DARK
+}
+
+type Query {
+  node(id: ID!, type: NodeType!): Node
+  nodes(id: [ID!]!, type: NodeType!): [Node]!
+}
+
+type Mutation
+
+schema {
+  query: Query
+  mutation: Mutation
+}

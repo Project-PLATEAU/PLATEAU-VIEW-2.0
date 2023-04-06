@@ -1,0 +1,5 @@
+github.com/googleapis/gax-go v2.0.0+incompatible h1:j0GKcs05QVmm7yesiZq2+9cxHkNK9YM6zKx4D2qucQU=
+github.com/hashicorp/errwrap v1.0.0 h1:hLrqtEDnRye3+sgx6z4qVLNuviH3MR5aQ0ykNJa/UYA=
+github.com/hashicorp/go-multierror v1.0.0 h1:iVjPR7a6H0tWELX5NxNe7bYopibicUzc7uPribsnS6o=
+github.com/jpillora/opts v1.2.3 h1:Q0YuOM7y0BlunHJ7laR1TUxkUA7xW8A2rciuZ70xs8g=
+github.com/posener/complete v1.2.2-0.20190308074557-af07aa5181b3 h1:GqpA1/5oN1NgsxoSA4RH0YWTaqvUlQNeOpHXD/JRbOQ=

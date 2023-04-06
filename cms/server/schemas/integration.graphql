@@ -1,0 +1,59 @@
+enum IntegrationType {
+  Public
+  Private
+}
+
+type IntegrationConfig {
+  token: String!
+  webhooks: [Webhook!]!
+}
+
+type Integration implements Node {
+  id: ID!
+  name: String!
+  description: String
+  logoUrl: URL!
+  iType: IntegrationType!
+  developerId: ID!
+  developer: User!
+  # config is only for a developer of this integration
+  config: IntegrationConfig
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+# Inputs
+input CreateIntegrationInput {
+  name: String!
+  description: String
+  logoUrl: URL!
+  type: IntegrationType!
+}
+
+input UpdateIntegrationInput {
+  integrationId: ID!
+  name: String
+  description: String
+  logoUrl: URL
+}
+
+input DeleteIntegrationInput {
+  integrationId: ID!
+}
+
+# Payload
+type IntegrationPayload {
+  integration: Integration!
+}
+
+type DeleteIntegrationPayload {
+  integrationId: ID!
+}
+
+# extend type Query {}
+
+extend type Mutation {
+  createIntegration(input: CreateIntegrationInput!): IntegrationPayload
+  updateIntegration(input: UpdateIntegrationInput!): IntegrationPayload
+  deleteIntegration(input: DeleteIntegrationInput!): DeleteIntegrationPayload
+}
