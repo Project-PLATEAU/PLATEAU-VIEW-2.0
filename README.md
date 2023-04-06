@@ -8,7 +8,7 @@ PLATEAU VIEW 2.0 は以下のシステムにより構成されます。
 - **PLATEAU Editor**: ビューワーの作成・公開をノーコードで行う。
 - **PLATEAU VIEW**: 様々なPLATEAU関連データセットの可視化が可能なWebアプリケーション。
 
-詳細は[「実証環境構築マニュアル 第3.0版」](https://www.mlit.go.jp/plateau/file/libraries/doc/plateau_doc_0009_ver03.pdf)を参照してください。
+詳細は[「実証環境構築マニュアル 第3.0版」](https://www.mlit.go.jp/plateau/file/libraries/doc/plateau_doc_0009_ver03.pdf)を参照してください。  
 開発環境の構築手法は[terraform](terraform)を参照してください。
 
 ## フォルダ構成
