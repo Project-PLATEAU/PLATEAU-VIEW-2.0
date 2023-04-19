@@ -11,7 +11,7 @@ const BasicOperation: React.FC = () => {
           <ImgWrapper>
             <Icon icon="mouseMiddleButton" width={65} height={95} />
             <CaptionText>
-              トラッグ：視点移動
+              ドラッグ：視点移動
               <br />
               <br />
               回転：拡大縮小
@@ -19,11 +19,11 @@ const BasicOperation: React.FC = () => {
           </ImgWrapper>
           <ImgWrapper>
             <Icon icon="mouseLeftButton" width={65} height={95} />
-            <CaptionText>トラッグ：画面移動</CaptionText>
+            <CaptionText>ドラッグ：画面移動</CaptionText>
           </ImgWrapper>
           <ImgWrapper>
             <Icon icon="mouseRightButton" width={65} height={95} />
-            <CaptionText>トラッグ：拡大縮小</CaptionText>
+            <CaptionText>ドラッグ：拡大縮小</CaptionText>
           </ImgWrapper>
         </InstructionWrapper>
       </TopWrapper>
