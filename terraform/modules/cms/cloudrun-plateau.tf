@@ -98,7 +98,7 @@ resource "google_cloud_run_service" "plateauview_api" {
     }
     metadata {
       annotations = {
-        "autoscaling.knative.dev/maxScale"         = "100"
+        "autoscaling.knative.dev/maxScale"         = "10"
         "run.googleapis.com/execution-environment" = "gen2"
       }
     }

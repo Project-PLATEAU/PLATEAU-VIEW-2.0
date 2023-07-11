@@ -99,7 +99,7 @@ resource "google_cloud_run_service" "reearth_cms_api" {
         }
         env {
           name  = "REEARTH_CMS_TASK_GCPPROJECT"
-          value = data.google_project.project.name
+          value = data.google_project.project.project_id
         }
         env {
           name  = "REEARTH_CMS_TASK_GCPREGION"
@@ -125,11 +125,15 @@ resource "google_cloud_run_service" "reearth_cms_api" {
           name  = "REEARTH_CMS_AUTH0_WEBCLIENTID"
           value = module.auth0.auth0_client_spa.client_id
         }
+        env {
+          name  = "REEARTH_CMS_TASK_DECOMPRESSORIMAGE"
+          value = "reearth/reearth-cms-decompressor:rc"
+        }
       }
     }
     metadata {
       annotations = {
-        "autoscaling.knative.dev/maxScale"         = "100"
+        "autoscaling.knative.dev/maxScale"         = "10"
         "run.googleapis.com/execution-environment" = "gen2"
       }
     }

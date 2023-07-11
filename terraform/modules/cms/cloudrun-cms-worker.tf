@@ -58,7 +58,7 @@ resource "google_cloud_run_service" "reearth_cms_worker" {
         }
         env {
           name  = "REEARTH_CMS_WORKER_GCP_PROJECT"
-          value = data.google_project.project.name
+          value = data.google_project.project.project_id
         }
         env {
           name  = "REEARTH_CMS_WORKER_DECOMPRESSION_NUM_WORKERS"
@@ -76,7 +76,7 @@ resource "google_cloud_run_service" "reearth_cms_worker" {
     }
     metadata {
       annotations = {
-        "autoscaling.knative.dev/maxScale"         = "100"
+        "autoscaling.knative.dev/maxScale"         = "10"
         "run.googleapis.com/execution-environment" = "gen2"
       }
     }
